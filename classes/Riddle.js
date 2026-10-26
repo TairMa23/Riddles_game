@@ -35,7 +35,7 @@ class Riddle {
 
 export default Riddle;
 
-export default class MultipleChoiceRiddle extends Riddle {
+class MultipleChoiceRiddle extends Riddle {
   constructor(details) {
     super(details);
     this.choices = details.choices;
@@ -61,3 +61,4 @@ export default class MultipleChoiceRiddle extends Riddle {
   
   }
 }
+export { MultipleChoiceRiddle };
