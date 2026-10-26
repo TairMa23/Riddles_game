@@ -34,12 +34,7 @@ riddles.forEach((riddle, index) => {
 
     const startTime = Date.now();
 
-    const rid = new Riddle(
-        riddle.id,
-        riddle.name,
-        riddle.taskDescription,
-        riddle.correctAnswer
-    );
+    const rid = new Riddle(riddle);
     rid.ask(prompt);
 
     const endTime = Date.now();
