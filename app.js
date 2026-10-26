@@ -17,6 +17,19 @@ import Riddle from './classes/Riddle.js';
 import Player from './classes/Player.js';
 import riddles from './riddles/index.js';
 
+function shuffle(array) {
+    const shuffled = [...array];
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[i]];
+    }
+
+    return shuffled;
+}
+
+const randomizedRiddles = shuffle(riddles);
+
 
 console.log("\n=============================");
 console.log("  Welcome to the Riddle Game!  ");
@@ -35,10 +48,10 @@ let selectedChoice = levels[Number(difficulty) - 1];
 const player = new Player(name, selectedChoice);
 
 console.log(`\nNice to meet you, ${player.name}!`);
-console.log(`There are ${riddles.length} ${difficulty} riddles waiting for you.\n`);
-const filteredRiddles = riddles.filter(
+const filteredRiddles = randomizedRiddles.filter(
     riddle => riddle.level === player.difficulty
 );
+console.log(`There are ${filteredRiddles.length} ${player.difficulty} riddles waiting for you.\n`);
 filteredRiddles.forEach((riddle, index) => {
     console.log(`--------------------------------`);
     console.log(`Riddle ${index + 1} of ${filteredRiddles.length}: ${riddle.name}`);
