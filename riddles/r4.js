@@ -10,5 +10,6 @@ export default {
 	taskDescription: "What word is spelled incorrectly in every dictionary?",
 	correctAnswer: "incorrectly",
 	level: "medium",
-    timeLimit: 5
+    timeLimit: 5,
+    hint: "Look at the word's spelling itself rather than the dictionaries' definitions."
 };

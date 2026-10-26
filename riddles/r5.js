@@ -10,6 +10,7 @@ export default {
   name: "Mystery of Time",
   taskDescription: "What has hands but cannot clap?",
   correctAnswer: "A clock",
+  hint: "It is an object that measures and shows the time.",
   level: "hard",
   timeLimit: 10
 };

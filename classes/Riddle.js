@@ -19,36 +19,48 @@ class Riddle {
         this.correctAnswer = details.correctAnswer;
         this.level = details.level;
         this.timeLimit = details.timeLimit;
+        this.hint = details.hint;
     }
 
     ask(prompt) {
         let late = false;
+        let hintPenalty = 0;
         console.log(`🧩 Riddle: ${this.name}`);
         console.log(`📝 ${this.taskDescription}`);
         const startTime = Date.now();
-        let answer = prompt("👉 Enter your answer: ");
-        while (answer != this.correctAnswer) {
-            console.log("❌ That answer is not correct. Please try again!");
-            answer = prompt("👉 Enter a new answer: ");
-            const elapsedTime = (Date.now() - startTime) / 1000;
-            if (late==false && elapsedTime > this.timeLimit) {
-                late = true;
-                const timePenalty = elapsedTime - this.timeLimit;
-                console.log(`⏱️ Time limit exceeded by ${timePenalty.toFixed(1)} seconds. Penalty applied!`);
-                return elapsedTime + timePenalty;
+        let answer = prompt("👉 Enter your answer(or type 'hint'): ");
+        while (answer.toLowerCase() != this.correctAnswer.toLowerCase()) {
+            if (answer.toLowerCase() === "hint") {
+                if (this.hint) {
+                    console.log(`💡 Hint: ${this.hint}`);
+                    hintPenalty += 10;
+                } else {
+                    console.log("No hint available.");
+                }
+            } else {
+                console.log("❌ That answer is not correct. Please try again!");
+                answer = prompt("👉 Enter a new answer: ");
+                const elapsedTime = (Date.now() - startTime) / 1000;
+                if (late == false && elapsedTime > this.timeLimit) {
+                    late = true;
+                    const timePenalty = elapsedTime - this.timeLimit;
+                    console.log(`⏱️ Time limit exceeded by ${timePenalty.toFixed(1)} seconds. Penalty applied!`);
+                    return elapsedTime + timePenalty;
+                }
             }
+
         }
 
         console.log("✅ Great job! That is the correct answer!");
 
         const elapsedTime = (Date.now() - startTime) / 1000;
-        if (late==false &&  elapsedTime > this.timeLimit) {
+        if (late == false && elapsedTime > this.timeLimit) {
             const timePenalty = elapsedTime - this.timeLimit;
             console.log(`⏱️ Time limit exceeded by ${timePenalty.toFixed(1)} seconds. Penalty applied!`);
-            return elapsedTime + timePenalty;
+            return elapsedTime + timePenalty + hintPenalty;
         }
 
-        return elapsedTime;
+        return elapsedTime + hintPenalty;
     }
 }
 

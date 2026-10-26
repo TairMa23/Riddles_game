@@ -10,5 +10,6 @@ export default {
     taskDescription: "I follow you everywhere, but disappear when you turn off the light. What am I?",
     correctAnswer: "Your shadow",
     level: "easy",
-    timeLimit: 3
+    timeLimit: 3,
+    hint: "Think of a dark shape that follows you in sunlight."
 };

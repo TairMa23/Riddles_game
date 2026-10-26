@@ -10,6 +10,7 @@ export default {
   name: "Missing Letter",
   taskDescription: "What letter comes next in the sequence: A, C, E, G, ?",
   correctAnswer: "I",
+  hint: "The letters are skipping one letter in the alphabet each time.",
   level: "easy",
-    timeLimit: 10
+  timeLimit: 10
 };
