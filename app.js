@@ -46,9 +46,6 @@ filteredRiddles.forEach((riddle, index) => {
     const startTime = Date.now();
 
     const rid = new Riddle(riddle);
-    if (rid.level==player.difficulty) {
-        
-    }
     rid.ask(prompt);
 
     const endTime = Date.now();

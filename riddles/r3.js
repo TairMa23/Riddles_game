@@ -4,6 +4,7 @@ export default {
   name: "Tricky Pattern",
   taskDescription: "What comes next in this sequence: 2, 4, 8, 16, ?",
   correctAnswer: "32",
-  level: "medium"
+  level: "medium",
+  timeLimit: 15
 
 };

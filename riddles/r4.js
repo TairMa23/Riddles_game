@@ -9,5 +9,6 @@ export default {
 	name: "The Endless Word",
 	taskDescription: "What word is spelled incorrectly in every dictionary?",
 	correctAnswer: "incorrectly",
-	level: "medium"
+	level: "medium",
+    timeLimit: 5
 };

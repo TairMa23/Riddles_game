@@ -10,5 +10,6 @@ export default {
   name: "Mystery of Time",
   taskDescription: "What has hands but cannot clap?",
   correctAnswer: "A clock",
-  level: "hard"
+  level: "hard",
+  timeLimit: 10
 };
