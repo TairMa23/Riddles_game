@@ -8,5 +8,6 @@ export default {
     id: 1,
     name: "Everyday Mystery",
     taskDescription: "I follow you everywhere, but disappear when you turn off the light. What am I?",
-    correctAnswer: "Your shadow"
+    correctAnswer: "Your shadow",
+    level: "easy"
 };

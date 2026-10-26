@@ -8,5 +8,6 @@ export default {
 	id: 4,
 	name: "The Endless Word",
 	taskDescription: "What word is spelled incorrectly in every dictionary?",
-	correctAnswer: "incorrectly"
+	correctAnswer: "incorrectly",
+	level: "medium"
 };

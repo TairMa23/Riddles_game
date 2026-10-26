@@ -10,9 +10,11 @@
 // - showStats()
 //   - show the total time and the average time per riddle
 class Player {
-    constructor(name) {
+    constructor(name,difficulty) {
         this.name = name;
+        this.difficulty = difficulty;
         this.times = [];
+
     }
 
     recordTime(start, end) {

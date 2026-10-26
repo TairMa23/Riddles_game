@@ -17,6 +17,7 @@ class Riddle {
         this.name = details.name;
         this.taskDescription = details.taskDescription;
         this.correctAnswer = details.correctAnswer;
+        this.level = details.level;
     }
 
     ask(prompt) {

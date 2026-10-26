@@ -9,5 +9,6 @@ export default {
   id: 2,
   name: "Missing Letter",
   taskDescription: "What letter comes next in the sequence: A, C, E, G, ?",
-  correctAnswer: "I"
+  correctAnswer: "I",
+  level: "easy"
 };

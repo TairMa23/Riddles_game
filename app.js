@@ -23,18 +23,32 @@ console.log("  Welcome to the Riddle Game!  ");
 console.log("=============================");
 
 const name = prompt("Please enter your name: ");
-const player = new Player(name || "Player");
+
+console.log("Please Choose a difficulty: ");
+const levels = ["easy", "medium", "hard"];
+levels.forEach((choice, index) => {
+    console.log(`${index + 1}. ${choice}`);
+});
+let difficulty = prompt();
+
+let selectedChoice = levels[Number(difficulty) - 1];
+const player = new Player(name, selectedChoice);
 
 console.log(`\nNice to meet you, ${player.name}!`);
-console.log(`There are ${riddles.length} riddles waiting for you.\n`);
-
-riddles.forEach((riddle, index) => {
+console.log(`There are ${riddles.length} ${difficulty} riddles waiting for you.\n`);
+const filteredRiddles = riddles.filter(
+    riddle => riddle.level === player.difficulty
+);
+filteredRiddles.forEach((riddle, index) => {
     console.log(`--------------------------------`);
-    console.log(`Riddle ${index + 1} of ${riddles.length}: ${riddle.name}`);
+    console.log(`Riddle ${index + 1} of ${filteredRiddles.length}: ${riddle.name}`);
 
     const startTime = Date.now();
 
     const rid = new Riddle(riddle);
+    if (rid.level==player.difficulty) {
+        
+    }
     rid.ask(prompt);
 
     const endTime = Date.now();
