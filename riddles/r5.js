@@ -4,3 +4,10 @@
 // - name (string)
 // - taskDescription (string, the riddle text shown to the player)
 // - correctAnswer (string)
+
+export default {
+  id: 5,
+  name: "Mystery of Time",
+  taskDescription: "What has hands but cannot clap?",
+  correctAnswer: "A clock"
+};

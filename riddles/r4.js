@@ -3,4 +3,10 @@
 // - id (number)
 // - name (string)
 // - taskDescription (string, the riddle text shown to the player)
-// - correctAnswer (string)
+
+export default {
+	id: 4,
+	name: "The Endless Word",
+	taskDescription: "What word is spelled incorrectly in every dictionary?",
+	correctAnswer: "incorrectly"
+};
