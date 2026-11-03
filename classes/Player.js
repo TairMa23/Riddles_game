@@ -10,15 +10,24 @@
 // - showStats()
 //   - show the total time and the average time per riddle
 class Player {
-    constructor(name,difficulty) {
+    constructor(name) {
         this.name = name;
-        this.difficulty = difficulty;
+        this.difficulty = 'easy';
         this.times = [];
-
+        this.lowestTime = null;
+    }
+    updateDifficulty(newDifficulty) {
+        this.difficulty = newDifficulty;
+    }
+    getLowestTime() {
+        return this.lowestTime;
     }
 
     recordTime(start, end) {
         this.times.push(end - start);
+        if (this.lowestTime === null || end - start < this.lowestTime) {
+            this.lowestTime = end - start;
+        }
     }
 
     showStats() {

@@ -1,0 +1,78 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "riddles": [
+    {
+      "id": 1,
+      "name": "Everyday Mystery",
+      "taskDescription": "I follow you everywhere, but disappear when you turn off the light. What am I?",
+      "correctAnswer": "Your shadow",
+      "level": "easy",
+      "timeLimit": 3,
+      "hint": "Think of a dark shape that follows you in sunlight."
+    },
+    {
+      "id": 2,
+      "name": "Missing Letter",
+      "taskDescription": "What letter comes next in the sequence: A, C, E, G, ?",
+      "correctAnswer": "I",
+      "hint": "The letters are skipping one letter in the alphabet each time.",
+      "level": "easy",
+      "timeLimit": 10
+    },
+    {
+      "id": 3,
+      "name": "Tricky Pattern",
+      "taskDescription": "What comes next in this sequence: 2, 4, 8, 16, ?",
+      "correctAnswer": "32",
+      "hint": "Each number is doubled to get the next number.",
+      "level": "medium",
+      "timeLimit": 15
+    },
+    {
+      "id": 4,
+      "name": "The Endless Word",
+      "taskDescription": "What word is spelled incorrectly in every dictionary?",
+      "correctAnswer": "incorrectly",
+      "level": "medium",
+      "timeLimit": 5,
+      "hint": "Look at the word's spelling itself rather than the dictionaries' definitions."
+    },
+    {
+      "id": 5,
+      "name": "Mystery of Time",
+      "taskDescription": "What has hands but cannot clap?",
+      "correctAnswer": "A clock",
+      "hint": "It is an object that measures and shows the time.",
+      "level": "hard",
+      "timeLimit": 10
+    }
+  ],
+  "players": [
+    {
+      "name": "Test",
+      "lowestTime": null,
+      "id": 1
+    },
+    {
+      "name": "T",
+      "lowestTime": null,
+      "id": 2
+    }
+  ]
+}
