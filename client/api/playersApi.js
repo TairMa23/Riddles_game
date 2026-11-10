@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/players';
+const baseUrl = 'http://localhost:3000/api/players';
 
 async function findPlayerByName(name) {
     const response = await fetch(`${baseUrl}?name=${encodeURIComponent(name)}`);

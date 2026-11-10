@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000/riddles';
+const baseUrl = 'http://localhost:3000/api/riddles';
 async function getAllRiddles() {
     const response = await fetch(baseUrl);
 
