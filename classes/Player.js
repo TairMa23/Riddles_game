@@ -35,8 +35,8 @@ class Player {
         const average = this.times.length > 0 ? total / this.times.length : 0;
 
         console.log(`Player: ${this.name}`);
-        console.log(`Total time: ${(total / 1000).toFixed(2)} seconds`);
-        console.log(`Average time per riddle: ${(average / 1000).toFixed(2)} seconds`);
+        console.log(`Total time: ${(total).toFixed(2)} seconds`);
+        console.log(`Average time per riddle: ${(average ).toFixed(2)} seconds`);
     }
 }
 

@@ -1,16 +1,3 @@
-// The Riddle class. Export it as the default export.
-//
-// Properties (received in the constructor):
-// - id
-// - name
-// - taskDescription
-// - correctAnswer
-//
-// Method:
-// - ask(prompt)
-//   - show the riddle (name and taskDescription) to the player
-//   - ask the player for an answer using the `prompt` function that is passed in
-//   - keep asking until the answer is correct
 class Riddle {
     constructor(details) {
         this.id = details.id;
@@ -22,74 +9,94 @@ class Riddle {
         this.hint = details.hint;
     }
 
+    // מחשב את הזמן הסופי בשניות: זמן בפועל + קנס חריגה + קנס רמזים
+    calculateTime(startTime, hintPenalty) {
+        const elapsedTime = (Date.now() - startTime) / 1000;
+        let timePenalty = 0;
+
+        if (this.timeLimit && elapsedTime > this.timeLimit) {
+            timePenalty = elapsedTime - this.timeLimit;
+            console.log(`⏱️ Time limit exceeded by ${timePenalty.toFixed(1)} seconds. Penalty applied!`);
+        }
+
+        return elapsedTime + timePenalty + hintPenalty;
+    }
+
     ask(prompt) {
-        let late = false;
         let hintPenalty = 0;
+
         console.log(`🧩 Riddle: ${this.name}`);
         console.log(`📝 ${this.taskDescription}`);
+
         const startTime = Date.now();
-        let answer = prompt("👉 Enter your answer(or type 'hint'): ");
-        while (answer.toLowerCase() != this.correctAnswer.toLowerCase()) {
-            if (answer.toLowerCase() === "hint") {
+
+        while (true) {
+            const answer = prompt("👉 Enter your answer (or type 'hint'): ").trim().toLowerCase();
+
+            if (answer === "hint") {
                 if (this.hint) {
                     console.log(`💡 Hint: ${this.hint}`);
                     hintPenalty += 10;
                 } else {
                     console.log("No hint available.");
                 }
+            } else if (answer === this.correctAnswer.toLowerCase()) {
+                break;
             } else {
                 console.log("❌ That answer is not correct. Please try again!");
-                answer = prompt("👉 Enter a new answer: ");
-                const elapsedTime = (Date.now() - startTime) / 1000;
-                if (late == false && elapsedTime > this.timeLimit) {
-                    late = true;
-                    const timePenalty = elapsedTime - this.timeLimit;
-                    console.log(`⏱️ Time limit exceeded by ${timePenalty.toFixed(1)} seconds. Penalty applied!`);
-                    return elapsedTime + timePenalty;
-                }
             }
-
         }
 
         console.log("✅ Great job! That is the correct answer!");
-
-        const elapsedTime = (Date.now() - startTime) / 1000;
-        if (late == false && elapsedTime > this.timeLimit) {
-            const timePenalty = elapsedTime - this.timeLimit;
-            console.log(`⏱️ Time limit exceeded by ${timePenalty.toFixed(1)} seconds. Penalty applied!`);
-            return elapsedTime + timePenalty + hintPenalty;
-        }
-
-        return elapsedTime + hintPenalty;
+        return this.calculateTime(startTime, hintPenalty);
     }
 }
-
-export default Riddle;
 
 class MultipleChoiceRiddle extends Riddle {
     constructor(details) {
         super(details);
         this.choices = details.choices;
     }
+
     ask(prompt) {
-        // Show choices and handle input
+        let hintPenalty = 0;
+
         console.log(`🧩 Riddle: ${this.name}`);
         console.log(`📝 ${this.taskDescription}`);
         this.choices.forEach((choice, index) => {
             console.log(`${index + 1}. ${choice}`);
         });
 
-        let answer = prompt("👉 Enter your choice: ");
-        let selectedChoice = this.choices[Number(answer) - 1];
+        const startTime = Date.now();
 
-        while (selectedChoice !== this.correctAnswer) {
-            console.log("❌ That answer is not correct. Please try again!");
-            selectedChoice = prompt("👉 Enter a new answer: ");
-            let selectedChoice = this.choices[Number(answer) - 1];
+        while (true) {
+            const input = prompt("👉 Enter your choice (number, or 'hint'): ").trim().toLowerCase();
+
+            if (input === "hint") {
+                if (this.hint) {
+                    console.log(`💡 Hint: ${this.hint}`);
+                    hintPenalty += 10;
+                } else {
+                    console.log("No hint available.");
+                }
+                continue;
+            }
+
+            const selectedChoice = this.choices[Number(input) - 1];
+
+            if (selectedChoice === undefined) {
+                console.log(`Please enter a number between 1 and ${this.choices.length}.`);
+            } else if (selectedChoice === this.correctAnswer) {
+                break;
+            } else {
+                console.log("❌ That answer is not correct. Please try again!");
+            }
         }
 
         console.log("✅ Great job! That is the correct answer!");
-
+        return this.calculateTime(startTime, hintPenalty);
     }
 }
+
+export default Riddle;
 export { MultipleChoiceRiddle };

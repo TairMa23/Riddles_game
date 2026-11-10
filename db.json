@@ -19,11 +19,11 @@
   "riddles": [
     {
       "id": 1,
-      "name": "Everyday Mystery",
+      "name": "Everyday Mystery1",
       "taskDescription": "I follow you everywhere, but disappear when you turn off the light. What am I?",
       "correctAnswer": "Your shadow",
       "level": "easy",
-      "timeLimit": 3,
+      "timeLimit": 4,
       "hint": "Think of a dark shape that follows you in sunlight."
     },
     {
@@ -73,6 +73,36 @@
       "name": "T",
       "lowestTime": null,
       "id": 2
+    },
+    {
+      "name": "Tair",
+      "lowestTime": null,
+      "id": 3
+    },
+    {
+      "name": "a",
+      "lowestTime": null,
+      "id": 4
+    },
+    {
+      "name": "d",
+      "lowestTime": null,
+      "id": 5
+    },
+    {
+      "name": "dg",
+      "lowestTime": null,
+      "id": 6
+    },
+    {
+      "name": "tdf",
+      "lowestTime": null,
+      "id": 7
+    },
+    {
+      "name": "?",
+      "lowestTime": null,
+      "id": 8
     }
   ]
 }

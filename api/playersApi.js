@@ -1,21 +1,17 @@
 const baseUrl = 'http://localhost:3000/players';
+
 async function findPlayerByName(name) {
-    const response = await fetch(`${baseUrl}/${name}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-    if (response.status === 404) {
-        return undefined;
-    }
+    const response = await fetch(`${baseUrl}?name=${encodeURIComponent(name)}`);
+
     if (!response.ok) {
         throw new Error(`Failed to find player: ${response.status}`);
     }
-    return response.json();
+
+    const players = await response.json();
+    return players[0]; // undefined if the array is empty
 }
 async function createPlayer(name) {
-        console.log(`Creating player: ${name}`);
+
     const response = await fetch(baseUrl, {
         method: 'POST',
         headers: {
@@ -23,7 +19,6 @@ async function createPlayer(name) {
         },
         body: JSON.stringify({ name, lowestTime: null }),
     });
-    console.log(`Creating player: ${name}`);
     if (!response.ok) {
         throw new Error(`Failed to create player: ${response.status}`);
     }

@@ -53,7 +53,15 @@ async function deleteRiddle(id) {
 
     return response.json();
 }
+async function getRiddleById(id) {
+    const response = await fetch(`${baseUrl}/${id}`);
+    if (response.status === 404) return undefined;
+    if (!response.ok) {
+        throw new Error(`Failed to fetch riddle: ${response.status}`);
+    }
+    return response.json();
+}
 
 
-export { getAllRiddles, createRiddle, updateRiddle, deleteRiddle };
+export { getAllRiddles, createRiddle, updateRiddle, deleteRiddle,getRiddleById };
 export default getAllRiddles;
